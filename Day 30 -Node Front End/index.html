@@ -28,11 +28,11 @@
                                 <label for="exampleInputEmail1">Name</label>
                                 <input type='text' class="form-control" placeholder="Name" ng-model='vm.item.users' required>
                                 <label for="exampleInputEmail1">Age</label>
-                                <input type='number' class="form-control" placeholder="Price" ng-model='vm.item.age' required>
-                                <label for="exampleInputEmail1">JS Lover? (Yes or No)</label>
+                                <input type='number' class="form-control" placeholder="Age" ng-model='vm.item.age' required>
+                                <label for="exampleInputEmail1">JS Lover? (True or False)</label>
                                 <input type="text" name="likejs" ng-model="vm.item.jslover" class="form-control" required>
                                 <div class="footer">
-                                    <button ng-click="vm.click()" class="btn btn-primary submit" type="submit">
+                                    <button class="btn btn-primary submit" type="submit">
                                         Submit
                                     </button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -59,7 +59,7 @@
             <tbody>
                 <tr ng-repeat="data in vm.data">
                     <td>
-                        <button type="button" class="btn btn-default" aria-label="Left Align">
+                        <button type="button" ng-Click="vm.click(data._id)" class="btn deletebtn btn-default" aria-label="Left Align">
                             <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
                             </button>{{data.users}}</td>
                     <td>{{data.age}}</td>

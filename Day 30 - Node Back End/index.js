@@ -31,7 +31,7 @@ app.get('/createperson',function(req,res){
     var small = new User({users: "Han", age:30, jslover:true});
     small.save(function (err) {
       if (err) console.log(err);
-      res.json({success:"Yay!"});
+      res.json({success:"Yay!"}); //this communicates with the front end to execute what is being requested
     })
 });
 
@@ -54,26 +54,22 @@ app.post('/people', function(req, res){
        age: req.body.age,
        jslover: req.body.jslover,
    }
-      var small = new User(user);
-       small.save(function (err) {
-        if (err) console.log(err);
-         res.json({success:"Yay!"});
+      var newuser = new User(user);
+       newuser.save(function (err) { //'.save' is part of Mongoose saying save this up to the database or you can use '.create'
+        if (err) console.log(err); //we pass our function through
+         res.json({success:"Yay!"}); //this is just saying that if the id is the id you're looking for return the id
     })
   
 });
 
   
 // Delete a person
-app.post('/people/delete', function(req, res) {
-   let id = req.params._id;
-   console.log(id);
+app.delete('/people/:id', function(req, res) {
+  User.remove({_id:req.params.id}, function (err) {
+  if (err) console.log('Error');
+  res.json({success:"Yay!"});
+});
 
-   data.forEach((user,idx)=>{
-    if(user.id == id)
-      data.splice(idx,1)
-   
- })
-   res.json(data);
 
 });
 

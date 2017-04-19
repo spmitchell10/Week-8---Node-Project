@@ -6,25 +6,24 @@
         .controller('HeaderController', function(API) {
 
             const vm = this;
-            let data = API.getData();
-            data.then(res=>{
+            let data = API.getData(); //This is how we get our Data from the API
+            data.then(res => {
                 console.log(res);
                 vm.data = res.data
             });
-            
+
             vm.submitForm = function(isValid) {
                 if (isValid) {
                     // let user = data.id
                     // user = Date.now();
 
-                    const newItem = Object.assign({},vm.item);
+                    const newItem = Object.assign({}, vm.item);
                     let data = API.saveData(newItem);
-                    data.then(res=>{
-                        alert("TET");
-                        let getNew = API.getData();
-                        getNew.then(res=>{
-                            console.log("NEW",res);
-                            vm.data = res.data
+                    data.then(res => {
+                        let getNew = API.getData(); //this is telling the API to run the updated Data and return that Data
+                        getNew.then(res => { //This is displaying the new Data from the API that is sent over
+                            console.log("NEW", res);
+                            vm.data = res.data 
                         })
                     });
                     vm.item = {};
@@ -40,6 +39,19 @@
                 }
 
             }
+
+            vm.click = ((id) => {
+                console.log(id)
+                let data = API.deleteData(id);
+                data.then(res => {
+                    let getNew = API.getData(); //this is telling the API to run the updated Data and return that Data
+                    getNew.then(res => {
+                        console.log("NEW", res);
+                        vm.data = res.data
+                    })
+                });
+
+            })
 
         });
 })();

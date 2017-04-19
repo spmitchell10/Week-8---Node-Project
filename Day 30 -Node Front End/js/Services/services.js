@@ -20,6 +20,12 @@
                         url: "http://localhost:8080/people",
                     })
                 },
+                deleteData: (id) => {
+                    return $http({
+                        method: "DELETE",
+                        url: `http://localhost:8080/people/${id}`,
+                    })
+                },
             }
         })
 })();
