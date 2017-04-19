@@ -7,11 +7,22 @@ body {
     body .table th, body .table td {
       border-right: 1px solid lightgrey; }
 
+.glyphicon {
+  height: 14px;
+  width: 18px;
+  color: white;
+  padding: 0px; }
+
+.btn {
+  margin-right: 5px;
+  background: #FF6B6B;
+  padding: 0px; }
+
 .shopular {
   text-align: center;
   margin-bottom: 20px;
   margin-top: 30px;
-  color: #61DAFB; }
+  color: #4ECDC4; }
 
 .topGreyRow {
   height: 0px; }
@@ -32,12 +43,12 @@ header {
   color: white; }
 
 .bottomLine {
-  background: #61DAFB;
+  background: #FF6B6B;
   height: 10px; }
 
 img {
   width: 20px;
-  height: 20px; }
+  height: 15px; }
 
 .login {
   position: absolute;

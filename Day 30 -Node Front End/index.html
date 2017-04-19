@@ -12,8 +12,6 @@
 
 <body ng-controller='HeaderController as vm'>
     <header headroom class="container-fluid">
-
-
         <div class="row topGreyRow">
             <button class="btn btn-primary login" type="button" data-toggle="modal" data-target="#myModal">
                 Add Data
@@ -26,7 +24,7 @@
                             <h4 class="modal-title" id="myModalLabel">Add More Data!</h4>
                         </div>
                         <div class="modal-body">
-                            <form ng-submit="vm.submitForm(userForm.$valid)"  novalidate name='userForm'>
+                            <form ng-submit="vm.submitForm(userForm.$valid)" novalidate name='userForm'>
                                 <label for="exampleInputEmail1">Name</label>
                                 <input type='text' class="form-control" placeholder="Name" ng-model='vm.item.users' required>
                                 <label for="exampleInputEmail1">Age</label>
@@ -34,10 +32,10 @@
                                 <label for="exampleInputEmail1">JS Lover? (Yes or No)</label>
                                 <input type="text" name="likejs" ng-model="vm.item.jslover" class="form-control" required>
                                 <div class="footer">
-                                <button ng-click="vm.click()" class="btn btn-primary submit"  type="submit">
-                                    Submit
-                                </button>
-                                <button type="button" class="btn btn-default"  data-dismiss="modal">Close</button>
+                                    <button ng-click="vm.click()" class="btn btn-primary submit" type="submit">
+                                        Submit
+                                    </button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 </div>
                             </form>
                         </div>
@@ -60,9 +58,12 @@
             </thead>
             <tbody>
                 <tr ng-repeat="data in vm.data">
-                    <td>{{data.users}}</td>
+                    <td>
+                        <button type="button" class="btn btn-default" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                            </button>{{data.users}}</td>
                     <td>{{data.age}}</td>
-                    <td>{{data.id}}</td>
+                    <td>{{data._id}}</td>
                     <td>{{data.jslover}}</td>
                 </tr>
             </tbody>

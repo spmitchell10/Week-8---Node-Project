@@ -20,8 +20,12 @@
                     const newItem = Object.assign({},vm.item);
                     let data = API.saveData(newItem);
                     data.then(res=>{
-                        console.log(res);
-                        vm.data = res.data
+                        alert("TET");
+                        let getNew = API.getData();
+                        getNew.then(res=>{
+                            console.log("NEW",res);
+                            vm.data = res.data
+                        })
                     });
                     vm.item = {};
                     swal(
@@ -39,4 +43,3 @@
 
         });
 })();
-

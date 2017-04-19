@@ -3,10 +3,11 @@ const app = express();
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8080;
 const cors = require('cors');
-// var mongoose = require('mongoose');
+var mongoose = require('mongoose');
+const User = require('./models/users.js')
 
 // mongo database 
-// mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://Stephen:admin1@ds049466.mlab.com:49466/nodeproject');
 
 app.use(express.static('public'));
 app.use(cors());
@@ -15,28 +16,24 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
-const data = [
-  {
-    users: "Han",
-    age: "30",
-    id: "C3P0",
-    jslover: "Yes"
-
-  },
-  {
-    users: "Luke",
-    age: "25",
-    id: "R2D2",
-    jslover: "No" 
-  }
 
 
-];
 
 // Get all of people
 app.get('/people',function(req,res){
-  res.json(data);
+  User.find(function (err, User) {
+  if (err) return console.error(err);
+  res.json(User)
 })
+});
+// creating data in the database. hardcoding data
+app.get('/createperson',function(req,res){
+    var small = new User({users: "Han", age:30, jslover:true});
+    small.save(function (err) {
+      if (err) console.log(err);
+      res.json({success:"Yay!"});
+    })
+});
 
 // Get a single person
 app.get('/people/:id',function(req,res){
@@ -55,11 +52,13 @@ app.post('/people', function(req, res){
    let user = {
        users: req.body.users,
        age: req.body.age,
-       id: req.body.id,
        jslover: req.body.jslover,
    }
-      data.push(user);
-      res.json(data);
+      var small = new User(user);
+       small.save(function (err) {
+        if (err) console.log(err);
+         res.json({success:"Yay!"});
+    })
   
 });
 
