@@ -1,0 +1,82 @@
+<!doctype html>
+<html ng-app='node'>
+
+<head>
+    <title></title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="node_modules/sweetalert/dist/sweetalert.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body ng-controller='HeaderController as vm'>
+    <header headroom class="container-fluid">
+
+
+        <div class="row topGreyRow">
+            <button class="btn btn-primary login" type="button" data-toggle="modal" data-target="#myModal">
+                Add Data
+            </button>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Add More Data!</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form ng-submit="vm.submitForm(userForm.$valid)"  novalidate name='userForm'>
+                                <label for="exampleInputEmail1">Name</label>
+                                <input type='text' class="form-control" placeholder="Name" ng-model='vm.item.users' required>
+                                <label for="exampleInputEmail1">Age</label>
+                                <input type='number' class="form-control" placeholder="Price" ng-model='vm.item.age' required>
+                                <label for="exampleInputEmail1">JS Lover? (Yes or No)</label>
+                                <input type="text" name="likejs" ng-model="vm.item.jslover" class="form-control" required>
+                                <div class="footer">
+                                <button ng-click="vm.click()" class="btn btn-primary submit"  type="submit">
+                                    Submit
+                                </button>
+                                <button type="button" class="btn btn-default"  data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1 class="shopular">node<a style=color:white>.js</a></h1>
+        <div class="row bottomLine"></div>
+    </header>
+    <div class="container">
+        <table class="table" ng-class="vm.table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>ID</th>
+                    <th>JSLover?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in vm.data">
+                    <td>{{data.users}}</td>
+                    <td>{{data.age}}</td>
+                    <td>{{data.id}}</td>
+                    <td>{{data.jslover}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.3/angular.headroom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.3/headroom.js"></script>
+    <script src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
+    <script src='js/main.js'></script>
+    <script src='js/Services/services.js'></script>
+    <script src='js/Controllers/tableControllers.js'></script>
+</body>
+
+</html>
