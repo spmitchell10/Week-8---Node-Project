@@ -12,13 +12,13 @@
                 vm.data = res.data
             });
 
-            vm.submitForm = function(isValid) {
+            vm.submitForm = ((isValid)=> {
                 if (isValid) {
                     // let user = data.id
                     // user = Date.now();
 
                     const newItem = Object.assign({}, vm.item);
-                    let data = API.saveData(newItem);
+                    let data = API.saveData(newItem); //this is linked to saveData that saves newItem and that 'data' is then updated below
                     data.then(res => {
                         let getNew = API.getData(); //this is telling the API to run the updated Data and return that Data
                         getNew.then(res => { //This is displaying the new Data from the API that is sent over
@@ -38,7 +38,7 @@
                         'error');
                 }
 
-            }
+            })
 
             vm.click = ((id) => {
                 console.log(id)
